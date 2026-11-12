@@ -52,3 +52,7 @@ export const toInputValue = (iso) => {
 export const toIso = (inputValue) => new Date(inputValue).toISOString();
 export const formatDateTime = (iso) =>
     new Date(iso).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' });
+
+//A moment as a YYYY-MM-DD day in Thai time: the backend counts rooms per Thai day
+export const thaiDay = (value = new Date()) =>
+    new Date(value).toLocaleDateString('en-CA', { timeZone: 'Asia/Bangkok' });

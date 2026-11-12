@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import ProtectedRoute from './components/ProtectedRoute';
 import Spaces from './pages/Spaces';
@@ -9,7 +9,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import Reservations from './pages/Reservations';
 import AdminSpaces from './pages/AdminSpaces';
-import AdminStats from './pages/AdminStats';
+import AdminDashboard from './pages/AdminDashboard';
 
 export default function App() {
     return (
@@ -25,7 +25,8 @@ export default function App() {
                     <Route path="/resetpassword/:token" element={<ResetPassword />} />
                     <Route path="/reservations" element={<ProtectedRoute><Reservations /></ProtectedRoute>} />
                     <Route path="/admin/spaces" element={<ProtectedRoute admin><AdminSpaces /></ProtectedRoute>} />
-                    <Route path="/admin/stats" element={<ProtectedRoute admin><AdminStats /></ProtectedRoute>} />
+                    <Route path="/admin" element={<ProtectedRoute admin><AdminDashboard /></ProtectedRoute>} />
+                    <Route path="/admin/stats" element={<Navigate to="/admin" replace />} />
                     <Route path="*" element={<p>Page not found.</p>} />
                 </Routes>
             </main>

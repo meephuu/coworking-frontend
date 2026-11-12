@@ -31,7 +31,7 @@ export default function Header() {
                 <NavLink to="/" end>Spaces</NavLink>
                 {user && <NavLink to="/reservations">{isAdmin ? 'All reservations' : 'My reservations'}</NavLink>}
                 {isAdmin && <NavLink to="/admin/spaces">Manage spaces</NavLink>}
-                {isAdmin && <NavLink to="/admin/stats">Statistics</NavLink>}
+                {isAdmin && <NavLink to="/admin" end>Dashboard</NavLink>}
                 {user ? (
                     <button type="button" className="link" onClick={handleLogout}>Logout ({user.name})</button>
                 ) : (

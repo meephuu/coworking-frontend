@@ -7,6 +7,8 @@
     --accent: #2f7d6b;
     --accent-strong: #1f5c4d;
     --accent-soft: #e3f0ec;
+    --danger: #b3412f;
+    --danger-soft: #fbeae6;
     --radius: 12px;
 
     --font-header: 'Lilex', ui-monospace, Consolas, monospace;
@@ -24,6 +26,8 @@
         --accent: #5fb7a1;
         --accent-strong: #86cdb9;
         --accent-soft: #1f3530;
+        --danger: #f0897a;
+        --danger-soft: #3b2723;
     }
 }
 
@@ -124,26 +128,29 @@ input:focus, select:focus {
 }
 .btn:hover:not(:disabled) { border-color: var(--ink); color: var(--ink); }
 form .actions > .btn:first-child:not(.small),
-.filters > .btn {
+.filters > .btn:first-of-type {
     background: var(--ink);
     color: var(--bg);
     border-color: var(--ink);
 }
 form .actions > .btn:first-child:not(.small):hover:not(:disabled),
-.filters > .btn:hover:not(:disabled) {
+.filters > .btn:first-of-type:hover:not(:disabled) {
     background: var(--accent);
     border-color: var(--accent);
     color: #fff;
 }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .btn.small { padding: 0.2rem 0.8rem; font-size: 0.82rem; }
+.btn.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn.active:hover:not(:disabled) { color: var(--bg); }
 
 .actions { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
 .muted { color: var(--muted); }
 
 .error {
-    background: var(--accent-soft);
-    border: 1px solid var(--accent);
+    background: var(--danger-soft);
+    color: var(--danger);
+    border: 1px solid var(--danger);
     border-radius: 10px;
     padding: 0.65rem 0.9rem;
     max-width: 640px;
@@ -218,6 +225,19 @@ td input, td select { width: 100%; padding: 0.3rem 0.5rem; }
 .bar-track { background: var(--line); border-radius: 999px; height: 0.7rem; display: block; overflow: hidden; }
 .bar-fill { display: block; height: 100%; background: var(--accent); border-radius: 999px; }
 .bar-value { text-align: right; color: var(--muted); }
+.bar-fill.is-full { background: var(--ink); }
+
+/* Column charts */
+.cols { display: flex; align-items: flex-end; gap: 3px; padding-top: 0.5rem; }
+.col { flex: 1; min-width: 0; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+.col-bar { width: 100%; background: var(--accent); border-radius: 4px 4px 0 0; display: block; }
+.col:hover .col-bar { background: var(--accent-strong); }
+.col-label { height: 26px; font-size: 0.7rem; color: var(--muted); white-space: nowrap; line-height: 26px; }
+
+/* Availability and distance */
+.tag { display: inline-block; justify-self: start; background: var(--accent-soft); color: var(--accent-strong); border-radius: 999px; padding: 0 0.6rem; font-size: 0.8rem; }
+.full { color: var(--accent-strong); }
+label.inline { display: inline-grid; margin-bottom: 1rem; }
 
 @media (max-width: 640px) {
     h1 { font-size: 1.45rem; }
